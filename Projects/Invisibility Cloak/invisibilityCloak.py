@@ -47,6 +47,12 @@ while(cap.isOpened()):
     upper_red = np.array([179, 255, 255])
     mask1 = cv.inRange(hsv, lower_red, upper_red)
 
+    lower_gray = np.array([77, 22, 16])
+    upper_gray = np.array([149, 255, 148])
+    mask2 = cv.inRange(hsv, lower_gray, upper_gray)
+
+    mask1 = mask1 + mask2
+
 
 # Replace red portion with mask
     mask1 = cv.morphologyEx(mask1, cv.MORPH_OPEN, np.ones((3,3), np.uint8))
